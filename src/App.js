@@ -1,26 +1,30 @@
-import "./App.css";
-import Navbar from "./Component/Navbar";
-import NewsBasket from "./Component/NewsBasket";
-import AboutUs from "./Component/AboutUs";
-import Contact from "./Component/Contact";
-// import {Button} from '@mui/material'
-import { Routes } from "react-router-dom";
-import { Route } from "@mui/icons-material";
-function App() {
+import React from 'react'
+import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
+import NewsBasket from './Component/NewsBasket'
+import Technology from './Component/Technology'
+import Business from './Component/Economy'
+import Entertainment from './Component/Entertainment'
+import Health from './Component/Health'
+import General from './Component/General'
+import Sports from './Component/Sports'
+// import Layout from './\/Component/Layout'
+const App = () => {
   return (
-    <>
-    <Navbar/>
-    {/* <NewsBasket/> */}
-      <Route>
-      <Routes>
-        
-        <Route path="/" element={<NewsBasket/>} />
-        <Route path="/aboutus" element={<AboutUs/>} />
-        <Route path="/Contact" element={<Contact/>} />
-      </Routes>
-      </Route>
-    </>
-  );
+    <div>
+    
+   <Routes>
+    <Route exact path='/' element={<NewsBasket  />}/>
+    <Route exact path='/technology' element={<Technology />}/>
+    <Route exact path='/business' element={<Business />}/>
+    <Route exact path='/entertainment' element={<Entertainment />}/>
+    <Route exact path='/health' element={<Health />}/>
+    <Route exact path='/general' element={< General />}/>
+    <Route exact path='/sports' element={<Sports />}/>
+   </Routes>
+   
+    </div>
+  )
 }
 
-export default App;
+export default App
+
