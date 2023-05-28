@@ -6,7 +6,7 @@ import axios from 'axios'
 function Sports() {
   const [data,setData]=useState([])
    useEffect(()=>{
-    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=b1f195cb06584219aa06945e1a39d077").then((responce) => {
+    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=f52f4423e8494a5cbe2ad832d867dc7a").then((responce) => {
      setData(responce.data.articles)
      console.log(responce.data);
     })

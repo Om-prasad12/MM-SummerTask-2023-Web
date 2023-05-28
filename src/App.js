@@ -7,6 +7,8 @@ import Entertainment from './Component/Entertainment'
 import Health from './Component/Health'
 import General from './Component/General'
 import Sports from './Component/Sports'
+import Log from './Component/Log'
+// import Login from './Component/Login'
 // import Layout from './\/Component/Layout'
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
     <Route exact path='/health' element={<Health />}/>
     <Route exact path='/general' element={< General />}/>
     <Route exact path='/sports' element={<Sports />}/>
+    <Route exact path='/log' element={<Log/>}/>
    </Routes>
    
     </div>

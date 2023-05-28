@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LoginIcon from '@mui/icons-material/Login';
 import { AppBar, Box,Button, Divider, Drawer, IconButton,Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import "./Nav.css"
+import "./Body.css"
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   //Handel menu click
@@ -56,9 +56,11 @@ const Navbar = () => {
              sx={{mr:2,display:{sm:"none"}}}
              onClick={handleDrawerToggle}>
             <MenuIcon/>
-          </IconButton>
+          </IconButton >
           <Typography color={"goldenrod"} varient="h3" component="div" >
-          <NewspaperIcon sx={{ margin: "auto" }} />
+          <NewspaperIcon sx={{ margin: "auto" }}  color={"goldenrod"}/>
+          </Typography>
+          <Typography color={"goldenrod"} varient="h1" component="div" >
             NewsBasket
           </Typography>
           <Box sx={{display:{xs:"none",sm:"block"}}}>
@@ -86,7 +88,10 @@ const Navbar = () => {
               </li>
             </ul>
             </Box>
-            <Box class="button"
+            <Box class="button" 
+            onClick={() =>{
+              window.open("/log")
+            }}
             sx={{display:{xs:"none",sm:"block"}}}>
             <Button color="primary" variant="contained" endIcon={<LoginIcon/>}>Login</Button>
             </Box>
