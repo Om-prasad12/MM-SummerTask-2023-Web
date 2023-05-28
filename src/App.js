@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route,Routes } from 'react-router-dom'
+import {BrowserRouter, Route,Routes } from 'react-router-dom'
 import Headlines from './Component/Headlines'
 import Technology from './Component/Technology'
 import Business from './Component/Economy'
@@ -13,7 +13,7 @@ import Log from './Component/Log'
 const App = () => {
   return (
     <div>
-    
+    <BrowserRouter>
    <Routes>
     <Route exact path='/' element={<Headlines  />}/>
     <Route exact path='/technology' element={<Technology />}/>
@@ -24,7 +24,7 @@ const App = () => {
     <Route exact path='/sports' element={<Sports />}/>
     <Route exact path='/log' element={<Log/>}/>
    </Routes>
-   
+   </BrowserRouter>
     </div>
   )
 }
