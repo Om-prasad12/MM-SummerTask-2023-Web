@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/*"
+to = "index.html"
+starts = 200
