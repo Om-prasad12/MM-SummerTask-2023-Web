@@ -3,20 +3,19 @@ import Layout from './Layout'
 import { Button, Card, CardActions, CardContent, CardMedia, Typography,Box } from '@mui/material'
 import axios from 'axios'
 // import { responsiveProperty } from '@mui/material/styles/cssUtils'
-function NewsBasket() {
+function Headlines() {
   const [data,setData]=useState([])
    useEffect(()=>{
-    axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=78ce22f8eb754a1d86c596a844733718").then((responce) => {
+    axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=b1f195cb06584219aa06945e1a39d077").then((responce) => {
      setData(responce.data.articles)
      console.log(responce.data);
     }) 
    })
+  
   return (
-     
     <Layout>
      <Box sx={{ display: 'flex',flexWrap: 'wrap',justifyContent: 'space-evenly' }}>
-      {
-       
+      { 
       data.map((value)=>{
        return(
         <Box  sx={{
@@ -30,7 +29,11 @@ function NewsBasket() {
           <Typography  ><p >{value.description}</p></Typography>
         </CardContent>
         <CardActions >
-        <Button  sx={{margin:"auto"}} variant="contained">Contained</Button>
+        <Button  sx={{margin:"auto"}} variant="contained"
+        onClick={() =>{
+          window.open(value.url,'_blank')
+        }}
+        >Check Details</Button>
         </CardActions>
       </Card>
       </Box>
@@ -44,4 +47,4 @@ function NewsBasket() {
   )
 }
 
-export default NewsBasket
+export default Headlines

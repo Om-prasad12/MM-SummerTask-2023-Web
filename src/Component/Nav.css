@@ -1,0 +1,40 @@
+.navigation-menu{
+    list-style: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.navigation-menu li{
+    
+    margin: 0px 20px;
+}
+
+.navigation-menu li a{
+    text-decoration: none;
+    color: white;
+    font-size:large ;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* For drawer */
+.navigation-mobile{
+    list-style: none;
+}
+
+.navigation-mobile li{
+    margin-top: 2px;
+}
+.navigation-mobile li a{
+    text-decoration: none;
+    color:black;
+    font-size:large ;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navigation-mobile-button{
+    margin-top: 2px;
+    margin-left:38px;
+}
+.button{
+    margin-left:22rem;
+}

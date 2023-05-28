@@ -6,7 +6,7 @@ import axios from 'axios'
 function Entertainment() {
   const [data,setData]=useState([])
    useEffect(()=>{
-    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=78ce22f8eb754a1d86c596a844733718").then((responce) => {
+    axios.get("https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=b1f195cb06584219aa06945e1a39d077").then((responce) => {
      setData(responce.data.articles)
      console.log(responce.data);
     })
@@ -29,7 +29,11 @@ function Entertainment() {
           <Typography><p >{value.description}</p></Typography>
         </CardContent>
         <CardActions >
-        <Button  sx={{margin:"auto"}} variant="contained">Contained</Button>
+        <Button  sx={{margin:"auto"}} variant="contained"
+        onClick={() =>{
+          window.open(value.url,'_blank')
+        }}
+        >Check Details</Button>
         </CardActions>
       </Card>
       </Box>

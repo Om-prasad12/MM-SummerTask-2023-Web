@@ -1,6 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
-import NewsBasket from './Component/NewsBasket'
+import { Route,Routes } from 'react-router-dom'
+import Headlines from './Component/Headlines'
 import Technology from './Component/Technology'
 import Business from './Component/Economy'
 import Entertainment from './Component/Entertainment'
@@ -13,7 +13,7 @@ const App = () => {
     <div>
     
    <Routes>
-    <Route exact path='/' element={<NewsBasket  />}/>
+    <Route exact path='/' element={<Headlines  />}/>
     <Route exact path='/technology' element={<Technology />}/>
     <Route exact path='/business' element={<Business />}/>
     <Route exact path='/entertainment' element={<Entertainment />}/>
