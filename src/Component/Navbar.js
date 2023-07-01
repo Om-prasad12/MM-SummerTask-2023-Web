@@ -21,7 +21,7 @@ const Navbar = () => {
           <Divider/>
             <ul class="navigation-mobile">
               <li>
-              <NavLink to={"/"}>Headlines</NavLink>
+              <NavLink to={"/headlines"}>Headlines</NavLink>
               </li>
               <li>
               <NavLink to={"/general"}> General</NavLink>
@@ -65,7 +65,10 @@ const Navbar = () => {
           <Box sx={{display:{xs:"none",sm:"block"}}}>
             <ul class="navigation-menu">
               <li>
-              <NavLink to={"/"}>Headlines</NavLink>
+                <NavLink to={"/"}>Home</NavLink>
+              </li>
+              <li>
+              <NavLink to={"/headlines"}>Headlines</NavLink>
               </li>
               <li>
               <NavLink to={"/general"}> General</NavLink>
