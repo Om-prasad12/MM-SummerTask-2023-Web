@@ -9,12 +9,26 @@
     margin: 0px 20px;
 }
 
+.navigation-menu li a:hover{
+    color:rgb(203, 151, 87);
+}
+
 .navigation-menu li a{
     text-decoration: none;
     color: white;
     font-size:large ;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+
+/* For flex box */
+.flex{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 /* For drawer */
 .navigation-mobile{
@@ -31,12 +45,8 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.navigation-mobile-button{
-    margin-top: 2px;
-    margin-left:38px;
-}
-.button{
-    margin-left:22rem;
+.navigation-mobile li a:hover{
+    color:rgb(203, 151, 87);
 }
 
 /* For Footer */

@@ -24,6 +24,7 @@ const App = () => {
     <Route exact path='/log' element={<Log/>}/>
    </Routes>
     </div>
+    
   )
 }
 

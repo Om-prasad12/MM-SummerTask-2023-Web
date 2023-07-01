@@ -21,7 +21,7 @@ const Navbar = () => {
           <Divider/>
             <ul class="navigation-mobile">
               <li>
-              <NavLink to={"/"}>NewsBasket</NavLink>
+              <NavLink to={"/"}>Headlines</NavLink>
               </li>
               <li>
               <NavLink to={"/general"}> General</NavLink>
@@ -42,9 +42,9 @@ const Navbar = () => {
               <NavLink to={"/entertainment"}>Entertainment</NavLink>
               </li>
             </ul> 
-            <Box class="navigation-mobile-button">
+            {/* <Box class="navigation-mobile-button">
             <Button color="primary" variant="contained" endIcon={<LoginIcon/>}>Login</Button>
-            </Box>
+            </Box> */}
     </Box>
   )
   return (
@@ -57,12 +57,11 @@ const Navbar = () => {
              onClick={handleDrawerToggle}>
             <MenuIcon/>
           </IconButton >
-          <Typography color={"goldenrod"} varient="h3" component="div" >
-          <NewspaperIcon sx={{ margin: "auto" }}  color={"goldenrod"}/>
-          </Typography>
+          <Box class="flex">
           <Typography color={"goldenrod"} varient="h1" component="div" >
+          <NewspaperIcon sx={{ margin: "auto" }}  color={"goldenrod"}/>
             NewsBasket
-          </Typography>
+          </Typography> 
           <Box sx={{display:{xs:"none",sm:"block"}}}>
             <ul class="navigation-menu">
               <li>
@@ -91,9 +90,9 @@ const Navbar = () => {
             <Box class="button" 
             onClick={() =>{
               window.open("/log")
-            }}
-            sx={{display:{xs:"none",sm:"block"}}}>
+            }}>
             <Button color="primary" variant="contained" endIcon={<LoginIcon/>}>Login</Button>
+            </Box>
             </Box>
         </Toolbar>
       </AppBar>
