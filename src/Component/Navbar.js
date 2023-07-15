@@ -3,7 +3,7 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MenuIcon from '@mui/icons-material/Menu';
 import LoginIcon from '@mui/icons-material/Login';
 import { AppBar, Box,Button, Divider, Drawer, IconButton,Toolbar, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import "./Body.css"
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,6 +11,7 @@ const Navbar = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const navigate=useNavigate();
   //Menu Drawer
   const drawer=(
     <Box onClick={handleDrawerToggle}>
@@ -91,10 +92,8 @@ const Navbar = () => {
             </ul>
             </Box>
             <Box class="button" 
-            onClick={() =>{
-              window.open("/log")
-            }}>
-            <Button color="primary" variant="contained" endIcon={<LoginIcon/>}>Login</Button>
+            onClick={()=>navigate("/admin")}>
+            <Button color="primary" variant="contained" endIcon={<LoginIcon/>}>Admin</Button>
             </Box>
             </Box>
         </Toolbar>

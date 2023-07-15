@@ -1,31 +1,35 @@
 import React from 'react'
-import {BrowserRouter, Route,Routes } from 'react-router-dom'
-import Headlines from './Component/Headlines'
-import Technology from './Component/Technology'
-import Business from './Component/Economy'
-import Entertainment from './Component/Entertainment'
-import Health from './Component/Health'
-import General from './Component/General'
-import Sports from './Component/Sports'
-import Log from './Component/Log'
-import Home from './Component/Home'
+import {Route,Routes } from 'react-router-dom'
+import Test from './Component/Test'
+// import Admin from './Component/admin'
+import Total from './Component/Admin/Total'
+import AddNews from './Component/Admin/addNews'
 // import Login from './Component/Login'
 // import Layout from './\/Component/Layout'
 const App = () => {
   return (
-    <div>
+    <>
    <Routes>
-   <Route exact path='/' element={<Home/>}/>
-    <Route exact path='/headlines' element={<Headlines  />}/>
-    <Route exact path='/technology' element={<Technology />}/>
-    <Route exact path='/business' element={<Business />}/>
-    <Route exact path='/entertainment' element={<Entertainment />}/>
-    <Route exact path='/health' element={<Health />}/>
-    <Route exact path='/general' element={< General />}/>
-    <Route exact path='/sports' element={<Sports />}/>
-    <Route exact path='/log' element={<Log/>}/>
+    <Route exact path='/' element={<Test api="/news"/>}/>
+    <Route exact path='/headlines' element={<Test api="/news/category/headlines"/>}/>
+    <Route exact path='/technology' element={<Test api="/news/category/technology"/>}/>
+    <Route exact path='/business' element={<Test api="/news/category/economy"/>}/>
+    <Route exact path='/entertainment' element={<Test api="/news/category/entertainment"/>}/>
+    <Route exact path='/health' element={<Test api="/news/category/health"/>}/>
+    <Route exact path='/general' element={<Test api="/news/category/general"/>}/>
+    <Route exact path='/sports' element={<Test api="/news/category/sports"/>}/>
+    <Route exact path='/admin' element={<Total api="/news"/>}/>
+    <Route exact path='/admin/headlines' element={<Total api="/news/category/headlines"/>}/>
+    <Route exact path='/admin/technology' element={<Total api="/news/category/technology"/>}/>
+    <Route exact path='/admin/business' element={<Total api="/news/category/economy"/>}/>
+    <Route exact path='/admin/entertainment' element={<Total api="/news/category/entertainment"/>}/>
+    <Route exact path='/admin/health' element={<Total api="/news/category/health"/>}/>
+    <Route exact path='/admin/general' element={<Total api="/news/category/general"/>}/>
+    <Route exact path='/admin/sports' element={<Total api="/news/category/sports"/>}/>
+    <Route exact path='/admin/about' element={<AddNews/>}/>
+    
    </Routes>
-    </div>
+    </>
     
   )
 }

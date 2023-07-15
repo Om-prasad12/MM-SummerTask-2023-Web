@@ -1,25 +1,41 @@
 import React,{useState,useEffect} from "react";
 import Layout from './Layout'
 import { Button, Card, CardActions, CardContent, CardMedia, Typography,Box } from '@mui/material'
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import {FacebookShareButton, LinkedinShareButton,WhatsappShareButton, TwitterShareButton} from "react-share";
+// import FacebookIcon from '@mui/icons-material/Facebook';
+// import LinkedInIcon from '@mui/icons-material/LinkedIn';
+// import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+// import TwitterIcon from '@mui/icons-material/Twitter';
+// import {FacebookShareButton, LinkedinShareButton,WhatsappShareButton, TwitterShareButton} from "react-share";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios'
 // import { responsiveProperty } from '@mui/material/styles/cssUtils'
-function Home() {
+function Test(props) {
   const [data,setData]=useState([])
    useEffect(()=>{
-    axios.get(" https://newsapi.org/v2/everything?q=bitcoin&apiKey=78ce22f8eb754a1d86c596a844733718").then((responce) => {
-     setData(responce.data.articles)
+    axios.get(`${props.api}`).then((responce) => {
+     setData(responce.data)
      console.log(responce.data);
-    }) 
-   },[])
+    }).catch((error)=>{
+      console.log(error);}
+    )
+   },[props.api])
    const article=(value) =>{
       window.open(value.url,'_blank');
+      axios.patch(`/news/view/${value._id}`).then((responce)=>{
+       console.log(responce.data);
+    }).catch((error)=>{
+      console.log(error);
+    })
     }
-   
+   const updateLike=(value)=>{
+    axios.patch(`/news/like/${value._id}`).then((responce)=>{
+       console.log(responce.data);
+    }).catch((error)=>{
+      console.log(error);
+    })
+   }
+
    
   return (
     <Layout>
@@ -38,26 +54,8 @@ function Home() {
           <Typography sx={{margin:"auto"}}><p >{value.description}</p></Typography>
         </CardContent>
         <CardActions >
-        <div >
-        <FacebookShareButton url={value.url}>
-          <FacebookIcon/>
-        </FacebookShareButton>
-        </div>
-        <div >
-        <LinkedinShareButton url={value.url}>
-        <LinkedInIcon/>
-        </LinkedinShareButton>
-        </div>
-        <div >
-        <WhatsappShareButton url={value.url}>
-        <WhatsAppIcon/>
-        </WhatsappShareButton>
-        </div>
-        <div >
-        <TwitterShareButton url={value.url}>
-        <TwitterIcon/>
-        </TwitterShareButton>
-        </div>
+          <Button onClick={ ()=>updateLike(value)}><FavoriteBorderIcon/>{value.like}</Button>
+          <VisibilityIcon/><Typography  sx={{margin:"3px"}}>{value.view}</Typography>
         <Button  sx={{margin:"auto"}} variant="contained"
         onClick={ ()=>article(value)}
         >Check Details</Button>
@@ -74,4 +72,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Test
