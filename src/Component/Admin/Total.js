@@ -6,7 +6,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 const Total = (props) => {
+  const [user,setUser]=useState(
+    {_id:"",urlToImage:"",title:"",description:"",url:"",category:"",author:"",content:""})
   const [data, setData] = useState([]);
+  // const [dataUpdate,setDataUpdate]=useState();
+  // const [update,setUpdate]=useState();
   const [del,setDel]=useState(false);
   useEffect(() => {
     axios
@@ -20,9 +24,19 @@ const Total = (props) => {
       });
   }, [props.api,del]);
 
-  const updateHandler =()=>{
-    setOpenPopup(true);
+  const updateHandler =(value)=>{
+  //  const res1= await axios.get(`/news/${id}`)
+    const { _id,urlToImage,url,title,description,author,content,category}=value
+      //  console.log(responce.data); 
+      setUser({_id:_id,urlToImage:urlToImage,title:title,description:description,url:url,
+      author:author,content:content,category:category})
+      
   }
+ useEffect(()=>{
+  // console.log(user)
+  if (user._id) {
+    setOpenPopup(true); }
+ },[user])
 
   const deleteHandler =(id)=>{
     alert(`${id} deteled successfully`);
@@ -43,10 +57,9 @@ const Total = (props) => {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           {
            data.map((value) => {
-            const {urlToImage,title,description,url,category,_id} =value;
+            const {urlToImage,title,_id} =value;
             return (
               <>
-              
               <Paper elevation={4} sx={{ margin: "10px" }}>
                 <Box display="flex" >
                   <img
@@ -54,7 +67,6 @@ const Total = (props) => {
                     alt="Image"
                     width="150px"
                     height="150px"
-                  
                   ></img>
                   <Typography
                     variant="h5"
@@ -66,7 +78,7 @@ const Total = (props) => {
                     variant="contained"
                     sx={{ height: "50px", margin: "auto" }}
                     startIcon={<EditIcon />}
-                    onClick={()=>updateHandler() }
+                    onClick={()=>updateHandler(value) }
                   >
                     Update
                   </Button>
@@ -80,19 +92,14 @@ const Total = (props) => {
                   </Button>
                 </Box>
               </Paper>
-              <Popup openPupup={openPupup}
-          setOpenPopup={setOpenPopup}
-          _id={_id}
-          urlToImage={urlToImage}
-          title={title}
-          description={description}
-          url={url} category={category}
-          />
               </>
             );
           })}
-          
         </Box>
+        <Popup openPupup={openPupup}
+          setOpenPopup={setOpenPopup}
+          data={user}
+          />
       </Box>
     </>
   );

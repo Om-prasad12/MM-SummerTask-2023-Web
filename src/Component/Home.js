@@ -19,8 +19,6 @@ function Home() {
    const article=(value) =>{
       window.open(value.url,'_blank');
     }
-   
-   
   return (
     <Layout>
      <Box sx={{ display: 'flex',flexWrap: 'wrap',justifyContent: 'space-evenly' }}>

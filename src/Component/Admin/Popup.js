@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState} from 'react'
 import axios from 'axios'
-import { Dialog,Card,CardContent,Typography,TextField,Button, Paper } from '@mui/material'
+import { Dialog,Card,CardContent,Typography,TextField,Button} from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel';
-const Popup = (props) => {
-    const {_id,title,urlToImage,description,url,category,openPupup,setOpenPopup} =props;
 
-    const [user,setUser]=useState(
-        {urlToImage:`${urlToImage}`,title:`${title}`,description:`${description}`,url:`${url}`,category:`${category}`})
+const Popup = (props) => {
+  const [user,setUser]=useState({})
+    const {data,openPupup,setOpenPopup} =props;
+      const {_id,urlToImage,title,description,url,category,author,content}=data
+      useEffect(()=>{
+        setUser(
+          {urlToImage:`${urlToImage}`,title:`${title}`,description:`${description}`,url:`${url}`,category:`${category}`,author:`${author}`,content:`${content}`})
+      },[data])
+    
        let name,value;
     const handleInput=(e)=>{
         console.log(e);
@@ -29,13 +34,20 @@ const Popup = (props) => {
   return (
     
     <Dialog open={openPupup}>
-       <Card sx={{maxWidth:"450px",margin:"10px auto"}}>
+       <Card sx={{maxWidth:"450px",margin:"0px auto"}}>
           <CardContent sx={{padding:"30px"}}>
-            <Typography variant='h4' sx={{margin:"10px 25px"}}>Update News</Typography>
+          <Button type='submit' 
+            onClick={()=>setOpenPopup(false)}
+             sx={{margin:"5px",float:"right",color:"red"}} ><CancelIcon fontSize='large'/></Button>
+            <Typography variant='h4' sx={{margin:"5px 25px"}}>Update News</Typography>
             <TextField  label="Update the image"  
             name="urlToImage" value={user.urlToImage}
             onChange={handleInput}
             variant='outlined' fullWidth sx={{margin:"10px"}}/>
+             <TextField label='Update the author name' 
+            name="title" value={user.author}
+            onChange={handleInput}
+            variant='outlined' fullWidth  sx={{margin:"10px"}}/>
             <TextField label='Update the title' 
             name="title" value={user.title}
             onChange={handleInput}
@@ -48,16 +60,18 @@ const Popup = (props) => {
             name="url" value={user.url}
             onChange={handleInput}
             variant='outlined' fullWidth  sx={{margin:"10px"}}/>
+             <TextField label='Update the content'   
+            name="title" value={user.content}
+            onChange={handleInput}
+            variant='outlined' fullWidth  sx={{margin:"10px"}}/>
             <TextField label='Update the category'
             name="category" value={user.category}
             onChange={handleInput}
             variant='outlined' fullWidth  sx={{margin:"10px"}}/>
             <Button type='submit' variant='contained' color='primary'
             onClick={()=>submitNews(`${_id}`)}
-            fullWidth sx={{margin:"10px"}} >Submit</Button>
-            <Button type='submit' variant='contained' color='primary'
-            onClick={()=>setOpenPopup(false)}
-            fullWidth sx={{margin:"10px"}} >Cancel</Button>
+            fullWidth sx={{margin:"5px"}} >Submit</Button>
+            
             </CardContent>
          </Card>
     </Dialog>

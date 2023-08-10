@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useState} from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -13,7 +13,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import LogoutIcon from '@mui/icons-material/Logout';
 import {useNavigate} from "react-router-dom";
+import Logout from "./logout";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -66,6 +68,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Admin() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [openLog,setOpenLog]=useState(false);
 
   const navigate = useNavigate();
 
@@ -298,7 +301,29 @@ export default function Admin() {
             </ListItemButton>
           </ListItem>
           
+          <ListItem disablePadding sx={{ display: "block" }} onClick={() => setOpenLog(true)}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
         </List>
+        <Logout openPupup={openLog}
+          setOpenPopup={setOpenLog}/>
         <Divider />
       </Drawer>
     </Box>
