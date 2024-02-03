@@ -41,7 +41,7 @@ const Navbar = (props) => {
         navigate("/profile")
       } 
     }
-  })
+  },[data]);
 
   //Handel menu click
   const handleDrawerToggle = () => {

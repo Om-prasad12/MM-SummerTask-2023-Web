@@ -9,9 +9,7 @@ const Protected = ({api}) => {
        console.log(list)
        if (list !=="admin"){
         navigate("/")
-        alert("Acces denied");
-       }
-            
+       }      
     },[])
   return (
     <div>

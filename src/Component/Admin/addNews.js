@@ -16,6 +16,9 @@ const AddNews = () => {
  }
 
  const submitNews = async ()=>{
+  if(!user.urlToImage|| !user.title || !user.description ||!user.url || !user.category || !user.author || !user.content){
+    alert("Fill all required fields!")
+  }else{
   axios.post("/news",user)
       .then((responce) => {
         //  console.log(responce.data);
@@ -28,7 +31,7 @@ const AddNews = () => {
         setError(error);
       });
  }
-
+ }
   return (
     <>
     <Box sx={{ display: 'flex' }}>

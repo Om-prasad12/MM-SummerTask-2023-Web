@@ -11,6 +11,7 @@ const Logout = (props) => {
     auth.signOut();
     setOpenPopup(false);
     navigate("/");
+    localStorage.setItem('role',"")
    }
   return (
     <Dialog open={openPupup}>
